@@ -1,0 +1,108 @@
+#!/usr/bin/pytxhon
+from numpy import*
+from random import choice
+
+
+teams =  []
+players = []
+file = open('players.txt', 'r')
+players = file.read().splitlines()
+print(players)
+file = open('teams.txt', 'r')
+teams = file.read().splitlines()
+print(teams)
+
+
+#1 print some players
+print('1', players[0])
+print(players[1])
+
+#2 print teams
+print(2, teams)
+
+#3 print random player
+print(3, choice(players))
+
+#4 delete random player
+randomPlayer = choice(players)
+print(4, randomPlayer)
+players.remove(randomPlayer)
+print(players)
+
+#5 add players print one of them then the new list
+newPlayers = ['Tarek', 'Dodier', 'Jaimie']
+players.extend(newPlayers)
+print(5, choice(newPlayers))
+print(players)
+
+#declare empty team lists
+teamOne = []
+teamTwo = []
+teamThree = []
+
+#6 choose a random name for each list
+nameTeamOne = choice(teams)
+print(6, nameTeamOne)
+teams.remove(nameTeamOne)
+print(teams)
+nameTeamTwo = choice(teams)
+teams.remove(nameTeamTwo)
+nameTeamThree = choice(teams)
+
+print('teamOne', nameTeamOne)
+print('teamTwo', nameTeamTwo)
+print('teamThree', nameTeamThree)
+
+#7 choose a random player for each team
+while len(players) > 0:
+  playerOne = choice(players)
+  print('teamOneSelection : ', playerOne)
+  teamOne.append(playerOne)
+  print(nameTeamOne, teamOne)
+  players.remove(playerOne)
+  
+  
+  playerTwo = choice(players)
+  print('teamTwoSelection: ', playerTwo)
+  teamTwo.append(playerTwo)
+  print(nameTeamTwo, teamTwo)
+  players.remove(playerTwo)
+
+  
+  playerThree = choice(players)
+  print('teamThreeSelection : ', playerThree)
+  teamThree.append(playerThree)
+  print(nameTeamThree, teamThree)
+  players.remove(playerThree)
+  if players == []: 
+    break
+
+print(7, teamOne)
+
+#8 print team names and team players
+print('teamOne', nameTeamOne, teamOne)
+print('teamTwo', nameTeamTwo, teamTwo)
+print('teamThree', nameTeamThree, teamThree)
+
+
+#9 create a file from a team list
+with open('teamOne.txt', 'w') as f:
+    for item in teamThree:
+        f.write("%s\n" % item)
+
+#10 choose two random teams for the competition and print in file
+competition = []
+firstTeamSelected = choice(teams)
+competition.append(firstTeamSelected)
+teams.remove(firstTeamSelected)
+secondTeamSelected = choice(teams)
+competition.append(secondTeamSelected)
+
+with open('competition.txt', 'w') as f:
+    for item in competition:
+        f.write("%s\n" % item)
+        break
+print(10,'Competiting teams :')
+print(competition)
+
+
